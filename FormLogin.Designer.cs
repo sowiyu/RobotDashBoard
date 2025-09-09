@@ -1,6 +1,6 @@
 ﻿namespace RobotDashboard
 {
-    partial class FormLogin
+    partial class FormLogrin
     {
         /// <summary>
         ///  Required designer variable.

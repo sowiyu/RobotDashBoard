@@ -7,7 +7,6 @@ C# Windows Forms와 MaterialSkin UI 프레임워크를 사용하여 Modbus TCP/I
 
 ##  주요 기능
 
-- **사용자 로그인**: 지정된 관리자 계정(`admin`/`1234`)으로 로그인하여 대시보드에 접근할 수 있습니다.
 - **실시간 연결 관리**: 로봇의 IP와 Port를 입력하여 실시간으로 연결하고 상태(`CONNECTED`/`DISCONNECTED`) 및 응답 속도(ms)를 모니터링합니다.
 - **Modbus 데이터 Read & Write**:
   - **Coil** (On/Off) 및 **Register** (16-bit 정수 값) 데이터를 읽고 쓸 수 있습니다.

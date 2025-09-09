@@ -77,40 +77,19 @@ namespace RobotDashboard
             StartPosition = FormStartPosition.CenterScreen;
             Size = new Size(1280, 800);
 
-            // Load 이벤트에서 로그인 창을 먼저 띄우므로, UI 초기화는 나중에 합니다.
-            this.Load += FormDashboard_Load;
+            InitializeModernLayout();
 
-            // 타이머 초기화
             statusUpdateTimer = new System.Windows.Forms.Timer { Interval = 1000 };
             statusUpdateTimer.Tick += StatusUpdateTimer_Tick;
 
             periodicReadTimer = new System.Windows.Forms.Timer();
             periodicReadTimer.Tick += PeriodicReadTimer_Tick;
 
+            // 대시보드(메인 창)가 닫히면 프로그램 전체 종료
             this.FormClosed += (s, args) => Application.Exit();
-        }
-
-        private void FormDashboard_Load(object sender, EventArgs e)
-        {
-            // 로그인 폼을 띄웁니다.
-            using (FormLogin loginForm = new FormLogin())
-            {
-                // 로그인 창을 띄우고 그 결과를 받습니다.
-                loginForm.ShowDialog();
-
-                // 로그인 성공 여부를 확인합니다.
-                if (loginForm.LoginSuccessful == false)
-                {
-                    // 로그인이 성공하지 않으면(OK가 아니면), 대시보드 창을 닫고 프로그램을 종료합니다.
-                    this.Close();
-                    return; // UI 초기화를 막기 위해 여기서 종료
-                }
-            }
-
-            // 로그인이 성공했을 때만 UI를 초기화하고 로그를 남깁니다.
-            InitializeModernLayout();
             log.Info("Dashboard form initialized and displayed.");
         }
+
         private void InitializeModernLayout()
         {
             var mainLayout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 2, RowCount = 1 };
@@ -383,7 +362,7 @@ namespace RobotDashboard
                 ReadOnly = true,
                 Font = new Font("맑은 고딕", 10),
                 BorderStyle = BorderStyle.None,
-                Text = "1. 사용자 PC의 IP를 Modbus 번역대와 동일한 대역으로 맞춰주세요.\n\n" +
+                Text = "1. 사용자 PC의 IP를 Modbus 번역기와 동일한 대역으로 맞춰주세요.\n\n" +
                        "2. Robot IP, Port 입력 후 '연결' 버튼을 클릭하세요. 'CONNECTED'가 표시되면 정상 접속된 것입니다.\n\n" +
                        "3. 각 READ와 WRITE 기능은 단일/범위 읽기 및 쓰기를 지원합니다. 사이드바의 '주소 범위 안내'를 참고하여 입력해주세요.\n\n" +
                        "4. 사용 완료 후에는 반드시 '연결 끊기'를 눌러주세요."
