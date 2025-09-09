@@ -1,17 +1,16 @@
+using System;
+using System.Windows.Forms;
+
 namespace RobotDashboard
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FormLogrin());
+            // 이제부터 FormMain이 이 프로그램의 진짜 주인입니다.
+            Application.Run(new FormMain());
         }
     }
 }
