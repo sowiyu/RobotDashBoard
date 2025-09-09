@@ -9,9 +9,8 @@ namespace RobotDashboard
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            // 이제부터 FormMain이 이 프로그램의 진짜 주인입니다.
-            Application.Run(new FormMain());
-            //asdf
+            Application.Run(new FormDashboard());
+            
         }
     }
 }
